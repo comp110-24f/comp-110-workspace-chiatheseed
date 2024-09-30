@@ -1,6 +1,11 @@
 """Pract w functions"""
 
+__author__: str = "730763577"
+
 from random import randint
+
+__author__: str = "730763577"
+
 
 print(randint(1, 20))
 
