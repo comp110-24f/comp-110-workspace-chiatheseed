@@ -1,4 +1,4 @@
-"""Challenge question number one! Mimic, main"""
+"""Challenge question number one! Mimic, main, message, input!"""
 
 __author__ = "730763577"
 
