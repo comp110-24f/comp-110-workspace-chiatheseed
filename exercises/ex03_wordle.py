@@ -101,7 +101,7 @@ def main(secret: str) -> None:
     turn_num: int = 1
     lose_statement: str = "X/6 - Sorry, try again tomorrow!"
 
-    while turn_num <= 6:
+    while turn_num < 7:
 
         turn_statement: str = f"=== Turn {turn_num}/6 ==="
         win_statement: str = f"You won in {turn_num}/6 turns!"
@@ -117,13 +117,14 @@ def main(secret: str) -> None:
             # this is all within an IF statement testing if guess is completely right (6 green boxes)
 
             print(win_statement)
+            turn_num = 6
             # if above IF statement is eval True, win_statement prints with num of turns
             # exit()
 
         elif turn_num == 6:
             print(lose_statement)
-        else:
-            turn_num += 1
+
+        turn_num += 1
 
     """if turn_num == 7:
         print(lose_statement)   """
