@@ -117,13 +117,16 @@ def main(secret: str) -> None:
             # this is all within an IF statement testing if guess is completely right (6 green boxes)
 
             print(win_statement)
-            exit()
             # if above IF statement is eval True, win_statement prints with num of turns
+            # exit()
+
+        elif turn_num == 6:
+            print(lose_statement)
         else:
             turn_num += 1
 
-    if turn_num == 7:
-        print(lose_statement)
+    """if turn_num == 7:
+        print(lose_statement)   """
 
 
 # MAIN
@@ -135,4 +138,4 @@ def main(secret: str) -> None:
 # Otherwise, move on to the next turn.
 
 if __name__ == "__main__":
-    main(secret="codess")
+    main(secret="codes")
