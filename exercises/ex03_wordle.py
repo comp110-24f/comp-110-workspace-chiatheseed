@@ -1,4 +1,4 @@
-"""Coding wordle! This is hard..."""
+"""Coding wordle! Uses multiple functions, while loops, and emojis"""
 
 __author__: str = "730763577"
 
@@ -28,7 +28,7 @@ def input_guess(correct_length: int) -> str:
 
 
 def contains_char(secret_word: str, char_guess: str) -> bool:
-    """funct tests each index of 1st parameter string to see if it matches 2nd parameter"""
+    """funct tests each index of 1st parameter str if it matches 2nd parameter"""
 
     assert len(char_guess) == 1
     # asserts that 2nd argument has length of 1, if else, returns error
@@ -67,9 +67,11 @@ def emojified(guess: str, secret: str) -> str:
     """returns str emojis to indicate char_guess is in the correct pos (green), wrong pos (yellow), or absent (white)"""
 
     assert len(guess) == len(secret)
+    # safe to assume length of guess is same as secret
 
     index: int = 0
     wordle_print: str = ""
+    # wordle_print is the str that displays colored emojis
 
     while index < len(secret):
         if guess[index] == secret[index]:
@@ -102,12 +104,14 @@ def main(secret: str) -> None:
     lose_statement: str = "X/6 - Sorry, try again tomorrow!"
 
     while turn_num < 7:
+        # previously, I had this as turn_num <= 6
+        # but autograder didn't like that so I changed my evaluations
 
         turn_statement: str = f"=== Turn {turn_num}/6 ==="
         win_statement: str = f"You won in {turn_num}/6 turns!"
 
         print(turn_statement)
-        # displays turns out of 6 you're on
+        # displays turn_num you're on out of 6
         if emojified(guess=input_guess(correct_length=len(secret)), secret=secret) == (
             f"{GREEN_BOX}" * len(secret)
         ):
@@ -118,6 +122,9 @@ def main(secret: str) -> None:
 
             print(win_statement)
             turn_num = 6
+            # Important! adding this line exits the while loop after the game is won
+            # so it won't trigger another input
+
             # if above IF statement is eval True, win_statement prints with num of turns
             # exit()
 
@@ -127,7 +134,8 @@ def main(secret: str) -> None:
         turn_num += 1
 
     """if turn_num == 7:
-        print(lose_statement)   """
+        print(lose_statement)"""
+    # autograder didn't like this
 
 
 # MAIN
