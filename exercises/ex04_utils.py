@@ -8,6 +8,9 @@ def all(list: list[int], num: int) -> bool:
 
     index: int = 0
 
+    if len(list) == 0:
+        return False
+
     while index < len(list):
         if list[index] != num:
             return False
