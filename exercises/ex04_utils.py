@@ -71,7 +71,5 @@ def extend(list1: list[int], list2: list[int]) -> None:
     index: int = 0
     while index < len(list2):
         list1.append(list2[index])
+        # appends every elem from list2 into list1
         index += 1
-
-
-# print(extend(list1=[1, 3, 5], list2=[2, 4, 6]))
