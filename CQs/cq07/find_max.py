@@ -42,5 +42,5 @@ def find_and_remove_max(input_list: list[int]) -> int:
 
 
 """
-l = [10, 10, 8, 7]
+l = [1, 2, 3]
 print(find_and_remove_max(l))"""
