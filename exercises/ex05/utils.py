@@ -65,6 +65,47 @@ def add_at_index(input_list: list[int], add_elem: int, idx_add: int) -> None:
     if idx_add < 0 or idx_add > len(input_list):
         raise IndexError("Index is out of bounds for the input list")
 
+    # front part of list split
+    lista: list[int] = []
+    # back part of list split
+    listb: list[int] = []
+
+    for i in range(0, idx_add):
+        lista.append(input_list[i])
+    for i in range(idx_add, len(input_list)):
+        listb.append(input_list[i])
+
+    lista.append(add_elem)
+
+    for i in listb:
+        lista.append(i)
+
+    input_list = []
+
+    for i in lista:
+        input_list.append(i)
+
+    print(input_list)
+
+
+# testing add at index function
+# add_at_index(input_list=[10, 9, 8, 7, 5], add_elem=6, idx_add=4)
+
+
+# len(input_list)
+
+
+# PLAN OF ACTION
+# we split the list into two lists by making for in loops with the range of 0, idx and idx+1, len(list)
+# append into two separate lists under each for in loop
+# add elem at end of first list
+# join 2 lists together again by for in looping twice?
+
+# first int is the element to add
+# second int is the index at which it is added
+
+# 1,2,3,5 -> 4,3 -> 1,2,3,4,5
+
 
 # ADD AT INDEX
 # append smth to the end of the list
