@@ -3,7 +3,7 @@
 __author__ = "730763577"
 
 
-def only_evans(input_list: list[int]) -> list[int]:
+def only_evens(input_list: list[int]) -> list[int]:
     """returns only elements of input list that are even w/o mutating input list"""
 
     # new list that holds even elems
@@ -18,7 +18,7 @@ def only_evans(input_list: list[int]) -> list[int]:
 
 
 # testing only_evens function
-# print(only_evans(input_list=[4, 4, 4]))
+# print(only_evens(input_list=[]))
 
 
 def sub(alist: list[int], idxs: int, idxe: int) -> list[int]:
@@ -65,6 +65,29 @@ def add_at_index(input_list: list[int], add_elem: int, idx_add: int) -> None:
     if idx_add < 0 or idx_add > len(input_list):
         raise IndexError("Index is out of bounds for the input list")
 
+    # submitted below for an 100 in autograder
+    # why range(len(input_list) - 1, idx_add, -1)?????
+    # 3rd value is the increment, which decreases by 1
+    # why do you have to work backwards???
+    # to preserve the value of each list element
+    # if you worked forwards, it would be like [10, 9, 8, 7] to [10, 9, 9, 9]
+    # whereas, if you worked backwards, each value would be preserved
+    # [10, 9, 8, 7] -> [10, 9, 8, 8] -> [10, 9, 9, 8] -> [10, 10, 9, 8]
+    # SPECIFIC VALUES OF EACH LIST ELEM IS PRESERVED BY WORKING BACKWARDS!!!
+
+    """ input_list.append(0)
+
+    # index minus one to not go out of range
+    for n in range(len(input_list) - 1, idx_add, -1):
+        input_list[n] = input_list[n - 1]
+
+    input_list[idx_add] = add_elem
+
+    print(input_list)
+"""
+
+    # Function below works, autograder was being nitpicky
+
     # front part of list split
     lista: list[int] = []
     # back part of list split
@@ -80,7 +103,10 @@ def add_at_index(input_list: list[int], add_elem: int, idx_add: int) -> None:
     for i in listb:
         lista.append(i)
 
-    input_list = []
+    cycle = len(input_list)
+    while cycle > 0:
+        input_list.pop(0)
+        cycle -= 1
 
     for i in lista:
         input_list.append(i)
@@ -89,8 +115,8 @@ def add_at_index(input_list: list[int], add_elem: int, idx_add: int) -> None:
 
 
 # testing add at index function
-# add_at_index(input_list=[10, 9, 8, 7, 5], add_elem=6, idx_add=4)
-
+# add_at_index(input_list=[10, 9, 8, 7, 5, 0], add_elem=6, idx_add=4)
+# add_at_index(input_list=[], add_elem=1, idx_add=1)
 
 # len(input_list)
 
@@ -111,3 +137,10 @@ def add_at_index(input_list: list[int], add_elem: int, idx_add: int) -> None:
 # append smth to the end of the list
 # then shift everything to the right of the index to make space for input elem
 # before you can insert new elem at correct index
+
+
+# a = [0, 1, 2, 3 , 4]
+# b = [0, 1, 2, 2 , 4]
+# changing i 3
+# a[3] = a[2]
+# a[4] = a[3]
