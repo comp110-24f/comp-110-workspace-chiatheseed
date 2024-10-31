@@ -156,18 +156,25 @@ def update_attendance(
 
     studentlist: list[str] = []
 
-    for weekday in attendance_log:
-        # weekday is the key and list of students is the value
-
-        if day == weekday:
-            studentlist.append(student)
-            attendance_log[weekday] += studentlist
-
-            studentlist = []
+    if day in attendance_log:
         # if day already exists in attendance log, simply appends student to the value list
-        else:
-            studentlist = [student]
-            attendance_log[day] = studentlist
-            studentlist = []
+        if not (student in attendance_log[day]):
+            # only if the student is not in the value list, do you add student to the value list
+            attendance_log[day].append(student)
+            # note the syntax!!! <dict_name>[<key>].append(<value>)
 
+    else:
+        # if day does not exist in attendance log, create new key/value pair
+        studentlist = [student]
+        # create an empty list to hold student str
+        attendance_log[day] = studentlist
+        # set new key equal to student list (new value)
+
+    # print(attendance_log)
+    # checking code
     return None
+
+
+"""attendance_log: dict = {"Monday": ["Vrinda", "Kaleb"], "Tuesday": ["Alyssa"]}
+update_attendance(attendance_log, "Tuesday", "Vrinda")
+update_attendance(attendance_log, "Wednesday", "Kaleb")"""
