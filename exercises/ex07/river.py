@@ -15,9 +15,9 @@ class River:
 
     def __init__(self, num_fish: int, num_bears: int):
         """New River with num_fish Fish and num_bears Bears"""
-        self.day: int = 0
-        self.fish: list[Fish] = []
-        self.bears: list[Bear] = []
+        self.day = 0
+        self.fish = []
+        self.bears = []
         # populate the river with fish and bears
         for _ in range(0, num_fish):
             self.fish.append(Fish())
@@ -25,6 +25,27 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self):
+        # new bear list to move surviving bears over
+        new_bear: list[Bear] = []
+
+        # new fish list to move surviving fish over
+        new_fish: list[Fish] = []
+
+        for _ in range(0, len(self.fish)):
+            if Fish.age <= 3:
+                new_fish.append(Fish())
+
+        for _ in range(0, len(self.bears)):
+            if Bear.age <= 5:
+                new_bear.append(Bear())
+
+        self.fish = new_fish
+        self.bear = new_bear
+
+        return None
+
+    def remove_fish(self, amount: int):
+
         return None
 
     def bears_eating(self):
@@ -40,9 +61,9 @@ class River:
         return None
 
     def view_river(self):
-        print(f"~~~ Day {River.day}: ~~~")
-        print(f"Fish population: {River.fish}")
-        print(f"Bear population: {River.bears}")
+        print(f"~~~ Day {self.day}: ~~~")
+        print(f"Fish population: {len(self.fish)}")
+        print(f"Bear population: {len(self.bears)}")
 
         return None
 
@@ -68,3 +89,14 @@ class River:
         self.repopulate_bears()
         # Visualize River
         self.view_river()
+
+    def one_river_week(self):
+        # calls one river day seven times
+        self.one_river_day()
+        self.one_river_day()
+        self.one_river_day()
+        self.one_river_day()
+        self.one_river_day()
+        self.one_river_day()
+        self.one_river_day()
+        return None
