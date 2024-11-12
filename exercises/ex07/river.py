@@ -6,12 +6,12 @@ from exercises.ex07.bear import Bear
 
 class River:
 
+    # what day of the river’s lifecycle ur modeling
     day: int
-    "what day of the river’s lifecycle ur modeling"
+    # river's fish population
     fish: list[Fish]
-    "river's fish population"
+    # river's bear population
     bears: list[Bear]
-    "river's bear population"
 
     def __init__(self, num_fish: int, num_bears: int):
         """New River with num_fish Fish and num_bears Bears"""
@@ -46,18 +46,54 @@ class River:
 
     def remove_fish(self, amount: int):
 
+        # new fish list to move fish NOT being removed
+        keep_fish: list[Fish] = []
+
+        for x in range(amount - 1, len(self.fish)):
+            keep_fish.append(self.fish[x])
+
+        self.fish = keep_fish
+
         return None
 
     def bears_eating(self):
+
+        if len(self.fish) > 5:
+            self.remove_fish(amount=3)
+            Bear.eat(num_fish=3)
+
         return None
 
     def check_hunger(self):
+
+        # new bear list to move surviving bears over
+        keep_bear: list[Bear] = []
+
+        for _ in range(0, len(self.bears)):
+            if Bear.hunger_score >= 0:
+                # which one is correct? Bear() or self.bears[x]?
+                keep_bear.append(Bear())
+
+        self.bears = keep_bear
+
         return None
 
     def repopulate_fish(self):
+
+        # if num of fish is even -> each fish is paired up
+        if len(self.fish) % 2 == 0:
+            for _ in range(0, int(len(self.fish) * 2)):
+                self.fish.append(Fish())
+
         return None
 
     def repopulate_bears(self):
+
+        # if num of bears is even -> each bear is paired up
+        if len(self.bears) % 2 == 0:
+            for _ in range(0, int(len(self.bears) // 2)):
+                self.bears.append(Bear())
+
         return None
 
     def view_river(self):
