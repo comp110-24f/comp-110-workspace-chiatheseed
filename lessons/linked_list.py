@@ -1,11 +1,18 @@
+"""Creating Linked Lists in class."""
+
 from __future__ import annotations
+
+__author__ = "730763577"
 
 
 class Node:
+    """Defining class Node."""
+
     value: int
     next: Node | None
 
     def __init__(self, value: int, next: Node | None):
+        """Initializing attributes."""
         self.value = value
         self.next = next
 
