@@ -126,5 +126,4 @@ def scale(head: Node | None, factor: int) -> Node | None:
         return node
 
 
-"""print(scale(linkify([1, 2, 3]), 2))
-"""
+# print(scale(linkify([1, 2, 3]), 2))
